@@ -10,7 +10,7 @@ class CustomerCollection extends GenericCollection
 {
     public function __construct(...$values)
     {
-        parent::__construct(Customer::class, $values);
+        parent::__construct(Customer::class, ...$values);
     }
 }
 ```
