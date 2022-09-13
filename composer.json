@@ -8,6 +8,11 @@
             "Pogulailo\\Collection\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Pogulailo\\Collection\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Andrew Pogulailo",
@@ -15,5 +20,7 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
