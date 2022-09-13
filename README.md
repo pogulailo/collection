@@ -3,6 +3,7 @@ A simple and concise implementation of strictly typed arrays in PHP. No extra co
 
 ## Usage
 First you need to create your own collection class which extends the `GenericCollection` and sets its type:
+
 ```php
 use Pogulailo\Collection\GenericCollection;
 
@@ -16,6 +17,7 @@ class CustomerCollection extends GenericCollection
 ```
 
 That's all, then you can enjoy all the advantages of strictly typed arrays:
+
 ```php
 function getCustomers(): CustomerCollection
 {
@@ -28,14 +30,19 @@ function getCustomers(): CustomerCollection
     return $customers;
 }
 
-$customers = getCustomers();
-
-foreach ($customers as $customer) {
-    // Do what you need to do
+function doSomething(CustomerCollection $customers): void
+{
+    foreach ($customers as $customer) {
+        // Do what you need to do
+    }
 }
+
+$customers = getCustomers();
+doSomething($customers);
 ```
 
 You can choose not to create your own collection class, but then you will need to do additional type checking:
+
 ```php
 use Pogulailo\Collection\GenericCollection;
 
@@ -50,14 +57,18 @@ function getCustomers(): GenericCollection
     return $customers;
 }
 
+function doSomething(GenericCollection $customers): void
+{
+    // In this case, you need to check the collection type first
+    if ($customers->getType() !== Customer::class) {
+        throw new Exception('I need customers, more customers...')
+    }
+    
+    foreach ($customers as $customer) {
+        // Do what you need to do
+    }
+}
+
 $customers = getCustomers();
-
-// In this case, you need to check the collection type first
-if ($customers->getType() !== Customer::class) {
-    throw new Exception('I need customers, more customers...')
-}
-
-foreach ($customers as $customer) {
-    // Do what you need to do
-}
+doSomething($customers);
 ```
