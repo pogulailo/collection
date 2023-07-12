@@ -52,7 +52,7 @@ class GenericCollection extends ArrayObject
      *
      * @return void
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         $this->validateValue($this->type, $value);
         parent::offsetSet($key, $value);

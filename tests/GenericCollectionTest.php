@@ -35,9 +35,9 @@ class GenericCollectionTest extends TestCase
     /**
      * @return void
      */
-    public function InstantiateWithRightType(): void
+    public function testInstantiateWithRightType(): void
     {
-        $elements = [ArrayObject::class, ArrayObject::class];
+        $elements = [new ArrayObject(), new ArrayObject()];
         $collection = new GenericCollection(ArrayObject::class, ...$elements);
 
         foreach ($elements as $key => $value) {
